@@ -1,0 +1,9 @@
+export const Whitam = 'black';
+export const Wprimer = '#35455f';
+export const Wputih = '#ffffff';
+export const WbiruC = '#039BE5';
+export const Wabu = '#78909C';
+// export const WbiruC = '#039BE5';
+// export const WbiruC = '#039BE5';
+// export const WbiruC = '#039BE5';
+// export const WbiruC = '#039BE5';
