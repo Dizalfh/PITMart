@@ -16,18 +16,18 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../router';
-import {Wabu, Whitam, Wprimer, Wputih} from '../utils';
+import {Wabu, Wabu1, WbiruC, Whitam, Wprimer, Wputih} from '../utils';
 
 const Register = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
-  const [name, setName] = useState<string>('');
+  const [username, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [no_hp, setNo_Hp] = useState<string>('');
-  const [tanggalLahir, setTanggalLahir] = useState<string>('');
-  const [jenis_kelamin, setJenis_kelamin] = useState<string>('');
+  const [tanggal_lahir, setTanggal_lahir] = useState<string>('');
+  const [kelamin, setKelamin] = useState<string>('');
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -59,7 +59,7 @@ const Register = () => {
           text: 'Ok',
         },
       ]);
-    } else if (jenis_kelamin === '') {
+    } else if (kelamin === '') {
       Alert.alert('harap di isi', 'Pastikan  untuk di isi', [
         {
           text: 'Ok',
@@ -69,12 +69,12 @@ const Register = () => {
 
     setLoading(true);
     var formdata = new FormData();
-    formdata.append('name', name);
+    formdata.append('username', username);
     formdata.append('email', email);
     formdata.append('password', password);
     formdata.append('no_hp', no_hp);
-    formdata.append('jenis_kelamin', jenis_kelamin);
-    formdata.append('tanggalLahir', tanggalLahir);
+    formdata.append('tanggal_lahir', tanggal_lahir);
+    formdata.append('kelamin', kelamin);
 
     var requestOptions = {
       method: 'POST',
@@ -83,11 +83,14 @@ const Register = () => {
     };
 
     fetch(
-      'https://7c61-2001-448a-4049-225b-1aef-6ccd-816c-8c4a.ngrok-free.app/api/register',
+      'https://95ae-2001-448a-4042-3e5c-ada0-a33d-6992-e7b5.ngrok-free.app/api/register',
       requestOptions,
     )
       .then(response => response.json())
-      .then(result => console.log(result))
+      .then(result => {
+        console.log(result);
+        navigation.replace('Login');
+      })
       .catch(error => console.log('error', error))
       .finally(() => setLoading(false));
   };
@@ -103,41 +106,37 @@ const Register = () => {
         <TextInput
           style={styles.inputEmail}
           placeholder={'Nama:'}
-          placeholderTextColor={Wabu}
-          onChangeText={(nm: string) => setName}></TextInput>
+          placeholderTextColor={Wputih}
+          onChangeText={(nm: string) => setName(nm)}></TextInput>
         <TextInput
           style={styles.inputPass}
           placeholder={'Email:'}
-          placeholderTextColor={Wabu}
+          placeholderTextColor={Wputih}
           onChangeText={(em: string) => setEmail(em)}></TextInput>
         <TextInput
           style={styles.inputPass}
           placeholder={'Password:'}
-          placeholderTextColor={Wabu}
+          placeholderTextColor={Wputih}
           onChangeText={(pass: string) => setPassword(pass)}></TextInput>
         <TextInput
           style={styles.inputPass}
           placeholder={'No.HP:'}
-          placeholderTextColor={Wabu}
+          placeholderTextColor={Wputih}
           onChangeText={(nohp: string) => setNo_Hp(nohp)}></TextInput>
         <TextInput
           style={styles.inputPass}
           placeholder={'Tanggal lahir:'}
-          placeholderTextColor={Wabu}
+          placeholderTextColor={Wputih}
           onChangeText={(tgllhr: string) =>
-            setTanggalLahir(tgllhr)
+            setTanggal_lahir(tgllhr)
           }></TextInput>
         <TextInput
           style={styles.inputPass}
           placeholder={'Jenis Kelamin'}
-          placeholderTextColor={Wabu}
-          onChangeText={(jnsklmn: string) =>
-            setJenis_kelamin(jnsklmn)
-          }></TextInput>
-        <TouchableOpacity
-          style={styles.logButton}
-          // onPress={() => navigation.replace('Login')}
-          onPress={() => reg()}>
+          placeholderTextColor={Wputih}
+          onChangeText={(klmn: string) => setKelamin(klmn)}></TextInput>
+
+        <TouchableOpacity style={styles.logButton} onPress={() => reg()}>
           {loading ? (
             <ActivityIndicator size={'small'} color="white" />
           ) : (
@@ -179,13 +178,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: hp('0.3%'),
     borderRadius: 20,
-    borderColor: Wputih,
-    backgroundColor: '#0277BD',
+    borderColor: WbiruC,
+    backgroundColor: Wputih,
   },
 
   text: {
     marginTop: hp('3.5%'),
-    color: Wputih,
+    color: Wprimer,
     fontSize: hp('5%'),
   },
 
@@ -195,7 +194,7 @@ const styles = StyleSheet.create({
     height: hp('5%'),
     color: Whitam,
     borderRadius: 15,
-    backgroundColor: Wputih,
+    backgroundColor: Wabu1,
   },
 
   inputPass: {
@@ -204,7 +203,7 @@ const styles = StyleSheet.create({
     height: hp('5%'),
     color: Whitam,
     borderRadius: 15,
-    backgroundColor: Wputih,
+    backgroundColor: Wabu1,
   },
 
   logButton: {

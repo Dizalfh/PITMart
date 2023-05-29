@@ -130,6 +130,18 @@ const Homepage: React.FC = () => {
                   uri: 'http://www.sinyalmagz.com/wp-content/uploads/2019/05/30-mei-2.jpg',
                 }}
               />
+              <Text style={styles.textDesk}>PANCAKEKUU</Text>
+              <Text style={styles.textDesk1}>
+                Bubuk pancake instan rasa coklat
+              </Text>
+              <Text
+                style={{
+                  marginTop: hp('2%'),
+                  marginLeft: '2%',
+                  color: Whitam,
+                }}>
+                Rp.30.000,-
+              </Text>
             </View>
             <View style={styles.productDetail}>
               <Image
@@ -148,6 +160,18 @@ const Homepage: React.FC = () => {
                   uri: 'http://www.sinyalmagz.com/wp-content/uploads/2019/05/30-mei-2.jpg',
                 }}
               />
+              <Text style={styles.textDesk}>PANCAKEKUU</Text>
+              <Text style={styles.textDesk1}>
+                Bubuk pancake instan rasa coklat
+              </Text>
+              <Text
+                style={{
+                  marginTop: hp('2%'),
+                  marginLeft: '2%',
+                  color: Whitam,
+                }}>
+                Rp.30.000,-
+              </Text>
             </View>
             <View style={styles.productDetail}>
               <Image
@@ -223,7 +247,7 @@ const styles = StyleSheet.create({
     marginTop: hp('2%'),
     width: wp('100%'),
     height: hp('100%'),
-    backgroundColor: Wprimer,
+    backgroundColor: Wputih,
   },
 
   productDisplay: {

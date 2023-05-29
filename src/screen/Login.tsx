@@ -5,8 +5,10 @@ import {
   TextInput,
   View,
   TouchableOpacity,
+  Alert,
+  ActivityIndicator,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -15,80 +17,89 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../router';
 import {Wabu, Whitam, Wprimer, Wputih} from '../utils';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { AsyncStorage } from 'react-native';
 
 const Login = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
-  //   const navigation =
-  //   useNavigation<NativeStackNavigationProp<RootStackParams>>();
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
-  // const [email, setEmail] = useState<string>('');
-  // const [password, setPassword] = useState<string>('');
+  const saveToken = async (token: any) => {
+    try {
+      await AsyncStorage.setItem('token', token);
+    } catch (e) {
+      console.log('gagal save token', e);
+    }
+  };
 
-  // const [loading, setLoading] = useState<boolean>(false);
+  const reg = () => {
+    if (email === '') {
+      Alert.alert('Ops !', 'Email harap di isi');
+    } else if (
+      email.split('@')[1] !== 'gmail.com' &&
+      email.split('@')[1] !== 'email.com'
+    ) {
+      Alert.alert('Ups !', 'Email yang anda masukan salah', [
+        {
+          text: 'Ok',
+        },
+      ]);
+    } else if (password === '') {
+      Alert.alert('Ups !', 'Password harap di isi', [
+        {
+          text: 'Ok',
+        },
+      ]);
+    } else if (password.length < 8) {
+      Alert.alert('Ops !', 'Password tidak Sesuai', [
+        {
+          text: 'Ok',
+        },
+      ]);
+    }
 
-  // const reg = () => {
-  //   if (email === '') {
-  //     Alert.alert('Ops !', 'Email harap di isi');
-  //   } else if (
-  //     email.split('@')[1] !== 'gmail.com' &&
-  //     email.split('@')[1] !== 'email.com'
-  //   ) {
-  //     Alert.alert('Ups !', 'Email yang anda masukan salah', [
-  //       {
-  //         text: 'Ok',
-  //       },
-  //     ]);
-  //   } else if (password === '') {
-  //     Alert.alert('Ups !', 'Password harap di isi', [
-  //       {
-  //         text: 'Ok',
-  //       },
-  //     ]);
-  //   } else if (password.length < 8) {
-  //     Alert.alert('Ops !', 'Password tidak Sesuai', [
-  //       {
-  //         text: 'Ok',
-  //       },
-  //     ]);
-  //   }
+    setLoading(true);
+    var formdata = new FormData();
+    formdata.append('email', email);
+    formdata.append('password', password);
 
-  //   setLoading(true);
-  //   var formdata = new FormData();
-  //   formdata.append('email', email);
-  //   formdata.append('password', password);
+    var requestOptions = {
+      method: 'POST',
+      body: formdata,
+      redirect: 'follow',
+    };
 
-  //   var requestOptions = {
-  //     method: 'POST',
-  //     body: formdata,
-  //     redirect: 'follow',
-  //   };
-
-  //   fetch('https://frontendreq.pondokprogrammer.com/api/login', requestOptions)
-  //     .then(response => response.json())
-  //     .then(result => {
-  //       console.log(result);
-  //       if (result.error_message) {
-  //         Alert.alert(
-  //           'Perhatian',
-  //           'Akun yang anda masukan salah / belum terdaftar',
-  //           [
-  //             {
-  //               text: 'Ok',
-  //             },
-  //           ],
-  //         );
-  //       } else {
-  //         console.log(result.token);
-  //         AsyncStorage.setItem('token', result.token);
-  //         navigation.replace('HomePostman');
-  //       }
-  //     })
-  //     .catch(error => console.log('error', error))
-  //     .finally(() => setLoading(false));
-  // };
+    fetch(
+      'https://95ae-2001-448a-4042-3e5c-ada0-a33d-6992-e7b5.ngrok-free.app/api/login',
+      requestOptions,
+    )
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+        if (result.error_message) {
+          Alert.alert(
+            'Perhatian',
+            'Akun yang anda masukan salah / belum terdaftar',
+            [
+              {
+                text: 'Ok',
+              },
+            ],
+          );
+        } else {
+          console.log(result.token);
+          AsyncStorage.setItem('token', result.token);
+          saveToken(result.token);
+          navigation.replace('Home');
+        }
+      })
+      .catch(error => console.log('error', error))
+      .finally(() => setLoading(false));
+  };
 
   return (
     <View style={styles.bgLogin}>
@@ -101,17 +112,19 @@ const Login = () => {
         <TextInput
           style={styles.inputEmail}
           placeholder={'Email'}
-          placeholderTextColor={Wabu}></TextInput>
+          placeholderTextColor={Wabu}
+          onChangeText={(em: string) => setEmail(em)}></TextInput>
         <TextInput
           style={styles.inputPass}
           placeholder={'Password'}
+          onChangeText={(pass: string) => setPassword(pass)}
           placeholderTextColor={Wabu}></TextInput>
-        <TouchableOpacity
-          style={styles.logButton}
-          onPress={() => navigation.replace('Home')}>
-          <View>
+        <TouchableOpacity style={styles.logButton} onPress={() => reg()}>
+          {loading ? (
+            <ActivityIndicator size={'small'} color="white" />
+          ) : (
             <Text style={styles.butText}>Masuk</Text>
-          </View>
+          )}
         </TouchableOpacity>
         <View style={styles.viewRegister}>
           <Text style={styles.registerText1}>Belum Punya Akun?</Text>
@@ -185,7 +198,7 @@ const styles = StyleSheet.create({
 
   butText: {
     fontSize: hp('2.5%'),
-    color: Whitam,
+    color: Wputih,
   },
 
   viewRegister: {

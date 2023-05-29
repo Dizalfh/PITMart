@@ -36,7 +36,7 @@ const BottomTabs = () => {
         },
       })}>
       <Tab.Screen name="HomePage" component={Homepage} />
-      <Tab.Screen name="Cart" component={Cart} />
+      <Tab.Screen name="Cart" component={Cart} options={{headerShown: true}} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );
