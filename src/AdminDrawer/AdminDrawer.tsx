@@ -4,7 +4,7 @@ import React from 'react';
 const AdminDrawer = () => {
   return (
     <View>
-      <Text>AdminDrawer</Text>
+      <Text>Drawer</Text>
     </View>
   );
 };
