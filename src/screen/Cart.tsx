@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {Whitam, Wprimer, Wputih} from '../utils';
 import {
@@ -9,7 +9,14 @@ import {
 const Cart = () => {
   return (
     <View style={styles.firstBackground}>
-      <View style={styles.cart1}></View>
+      <View style={styles.cart1}>
+        <Image
+          source={{
+            uri: 'https://s0.bukalapak.com/img/50746981792/s-330-330/data.jpeg.webp',
+          }}
+          style={styles.productCost}
+        />
+      </View>
     </View>
   );
 };
@@ -27,7 +34,14 @@ const styles = StyleSheet.create({
   cart1: {
     marginTop: hp('1%'),
     width: '100%',
-    height: '28%',
-    backgroundColor: Wputih,
+    height: '20%',
+    // alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#CFD8DC',
+  },
+
+  productCost: {
+    width: wp('30%'),
+    height: hp('15%'),
   },
 });

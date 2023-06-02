@@ -7,6 +7,7 @@ import Splash from '../screen/Splash';
 import BottomTabs from '../BottomTabs/BottomTabs';
 import Register from '../screen/Register';
 import Login from '../screen/Login';
+import Profile from '../screen/Profile';
 // import AdminDrawer from '../AdminDrawer/AdminDrawer';
 
 const Stack = createNativeStackNavigator<RootStackParams>();

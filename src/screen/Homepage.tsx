@@ -39,7 +39,7 @@ const Homepage: React.FC = () => {
     <View style={styles.bgUtama}>
       <View style={styles.welcomeText}>
         <View>
-          <Text style={styles.textWel1}>Hai, Username...</Text>
+          <Text style={styles.textWel1}>Hai, Hilmyy...</Text>
           <Text style={styles.textWel2}> Selamat datang di PIT Mart</Text>
         </View>
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
@@ -81,17 +81,17 @@ const Homepage: React.FC = () => {
               width: wp('96%'),
               height: hp('2%'),
             }}>
-            <Text style={{fontSize: hp('2.5%'), color: Wputih}}>
+            <Text style={{fontSize: hp('2.5%'), color: Whitam}}>
               Produk Rekomendasi
             </Text>
             <TouchableOpacity>
-              <Text style={{fontSize: hp('1.8%'), color: Wputih}}>
+              <Text style={{fontSize: hp('1.8%'), color: Whitam}}>
                 See More..
               </Text>
             </TouchableOpacity>
           </View>
-          <ScrollView>
-            <View style={styles.productWarp}>
+          <View style={styles.productWarp}>
+            <TouchableOpacity>
               <View style={styles.productDetail}>
                 <Image
                   style={styles.productView}
@@ -112,6 +112,8 @@ const Homepage: React.FC = () => {
                   Rp.30.000,-
                 </Text>
               </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
               <View style={styles.productDetail}>
                 <Image
                   style={styles.productView}
@@ -120,67 +122,75 @@ const Homepage: React.FC = () => {
                   }}
                 />
               </View>
-            </View>
-          </ScrollView>
-          <View style={styles.productWarp}>
-            <View style={styles.productDetail}>
-              <Image
-                style={styles.productView}
-                source={{
-                  uri: 'http://www.sinyalmagz.com/wp-content/uploads/2019/05/30-mei-2.jpg',
-                }}
-              />
-              <Text style={styles.textDesk}>PANCAKEKUU</Text>
-              <Text style={styles.textDesk1}>
-                Bubuk pancake instan rasa coklat
-              </Text>
-              <Text
-                style={{
-                  marginTop: hp('2%'),
-                  marginLeft: '2%',
-                  color: Whitam,
-                }}>
-                Rp.30.000,-
-              </Text>
-            </View>
-            <View style={styles.productDetail}>
-              <Image
-                style={styles.productView}
-                source={{
-                  uri: 'https://i.pinimg.com/564x/94/03/bf/9403bf0a4317828cc0d50e30d493c189.jpg',
-                }}
-              />
-            </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.productWarp}>
-            <View style={styles.productDetail}>
-              <Image
-                style={styles.productView}
-                source={{
-                  uri: 'http://www.sinyalmagz.com/wp-content/uploads/2019/05/30-mei-2.jpg',
-                }}
-              />
-              <Text style={styles.textDesk}>PANCAKEKUU</Text>
-              <Text style={styles.textDesk1}>
-                Bubuk pancake instan rasa coklat
-              </Text>
-              <Text
-                style={{
-                  marginTop: hp('2%'),
-                  marginLeft: '2%',
-                  color: Whitam,
-                }}>
-                Rp.30.000,-
-              </Text>
-            </View>
-            <View style={styles.productDetail}>
-              <Image
-                style={styles.productView}
-                source={{
-                  uri: 'https://i.pinimg.com/564x/94/03/bf/9403bf0a4317828cc0d50e30d493c189.jpg',
-                }}
-              />
-            </View>
+            <TouchableOpacity>
+              <View style={styles.productDetail}>
+                <Image
+                  style={styles.productView}
+                  source={{
+                    uri: 'http://www.sinyalmagz.com/wp-content/uploads/2019/05/30-mei-2.jpg',
+                  }}
+                />
+                <Text style={styles.textDesk}>PANCAKEKUU</Text>
+                <Text style={styles.textDesk1}>
+                  Bubuk pancake instan rasa coklat
+                </Text>
+                <Text
+                  style={{
+                    marginTop: hp('2%'),
+                    marginLeft: '2%',
+                    color: Whitam,
+                  }}>
+                  Rp.30.000,-
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <View style={styles.productDetail}>
+                <Image
+                  style={styles.productView}
+                  source={{
+                    uri: 'https://i.pinimg.com/564x/94/03/bf/9403bf0a4317828cc0d50e30d493c189.jpg',
+                  }}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.productWarp}>
+            <TouchableOpacity>
+              <View style={styles.productDetail}>
+                <Image
+                  style={styles.productView}
+                  source={{
+                    uri: 'http://www.sinyalmagz.com/wp-content/uploads/2019/05/30-mei-2.jpg',
+                  }}
+                />
+                <Text style={styles.textDesk}>PANCAKEKUU</Text>
+                <Text style={styles.textDesk1}>
+                  Bubuk pancake instan rasa coklat
+                </Text>
+                <Text
+                  style={{
+                    marginTop: hp('2%'),
+                    marginLeft: '2%',
+                    color: Whitam,
+                  }}>
+                  Rp.30.000,-
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <View style={styles.productDetail}>
+                <Image
+                  style={styles.productView}
+                  source={{
+                    uri: 'https://i.pinimg.com/564x/94/03/bf/9403bf0a4317828cc0d50e30d493c189.jpg',
+                  }}
+                />
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -208,10 +218,12 @@ const styles = StyleSheet.create({
   },
 
   textWel1: {
+    color: Wputih,
     fontSize: hp('3.9%'),
   },
 
   textWel2: {
+    color: Wputih,
     fontSize: hp('2.4%'),
   },
 
@@ -247,7 +259,9 @@ const styles = StyleSheet.create({
     marginTop: hp('2%'),
     width: wp('100%'),
     height: hp('100%'),
-    backgroundColor: Wputih,
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
+    backgroundColor: '#CFD8DC',
   },
 
   productDisplay: {
@@ -281,7 +295,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 
-  //////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////
 
   textDesk: {
     color: Whitam,

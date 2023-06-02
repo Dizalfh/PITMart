@@ -16,7 +16,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../router';
-import {Wabu, Whitam, Wprimer, Wputih} from '../utils';
+import {Wabu, Wabu1, Whitam, Wprimer, Wputih} from '../utils';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { AsyncStorage } from 'react-native';
 
@@ -74,7 +74,7 @@ const Login = () => {
     };
 
     fetch(
-      'https://95ae-2001-448a-4042-3e5c-ada0-a33d-6992-e7b5.ngrok-free.app/api/login',
+      'https://6dff-2001-448a-4042-67da-26ec-619c-7c2d-3120.ngrok-free.app/api/login',
       requestOptions,
     )
       .then(response => response.json())
@@ -111,14 +111,14 @@ const Login = () => {
         <Text style={styles.text}>Masuk</Text>
         <TextInput
           style={styles.inputEmail}
-          placeholder={'Email'}
-          placeholderTextColor={Wabu}
+          placeholder={'Email:'}
+          placeholderTextColor={Wputih}
           onChangeText={(em: string) => setEmail(em)}></TextInput>
         <TextInput
           style={styles.inputPass}
-          placeholder={'Password'}
+          placeholder={'Password:'}
           onChangeText={(pass: string) => setPassword(pass)}
-          placeholderTextColor={Wabu}></TextInput>
+          placeholderTextColor={Wputih}></TextInput>
         <TouchableOpacity style={styles.logButton} onPress={() => reg()}>
           {loading ? (
             <ActivityIndicator size={'small'} color="white" />
@@ -159,12 +159,14 @@ const styles = StyleSheet.create({
     height: hp('50%'),
     alignItems: 'center',
     borderRadius: 20,
-    backgroundColor: '#CFD8DC',
+    borderColor: Whitam,
+    borderWidth: hp('0.3%'),
+    backgroundColor: Wputih,
   },
 
   text: {
     marginTop: hp('3.5%'),
-    color: Wputih,
+    color: Wprimer,
     fontSize: hp('5%'),
   },
 
@@ -172,18 +174,18 @@ const styles = StyleSheet.create({
     marginTop: hp('5.6%'),
     width: wp('78%'),
     height: hp('5%'),
-    color: Whitam,
+    color: '#424242',
     borderRadius: 15,
-    backgroundColor: Wputih,
+    backgroundColor: Wabu1,
   },
 
   inputPass: {
     marginTop: 15,
     width: wp('78%'),
     height: hp('5%'),
-    color: Whitam,
     borderRadius: 15,
-    backgroundColor: Wputih,
+    color: '#424242',
+    backgroundColor: Wabu1,
   },
 
   logButton: {
@@ -202,8 +204,8 @@ const styles = StyleSheet.create({
   },
 
   viewRegister: {
-    marginTop: hp('8%'),
-    width: hp('17.5%'),
+    marginTop: hp('7.5%'),
+    width: hp('15.2%'),
     justifyContent: 'space-around',
     flexDirection: 'row',
   },

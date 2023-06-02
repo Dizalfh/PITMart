@@ -1,14 +1,14 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const AdminDrawer = () => {
+const SorotanIg = () => {
   return (
     <View>
-      <Text>AdminDrawer</Text>
+      <Text>SorotanIg</Text>
     </View>
   );
 };
 
-export default AdminDrawer;
+export default SorotanIg;
 
 const styles = StyleSheet.create({});

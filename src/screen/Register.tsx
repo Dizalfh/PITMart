@@ -83,7 +83,7 @@ const Register = () => {
     };
 
     fetch(
-      'https://95ae-2001-448a-4042-3e5c-ada0-a33d-6992-e7b5.ngrok-free.app/api/register',
+      'https://6dff-2001-448a-4042-67da-26ec-619c-7c2d-3120.ngrok-free.app/api/register',
       requestOptions,
     )
       .then(response => response.json())
@@ -132,7 +132,7 @@ const Register = () => {
           }></TextInput>
         <TextInput
           style={styles.inputPass}
-          placeholder={'Jenis Kelamin'}
+          placeholder={'Jenis Kelamin:'}
           placeholderTextColor={Wputih}
           onChangeText={(klmn: string) => setKelamin(klmn)}></TextInput>
 
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: hp('0.3%'),
     borderRadius: 20,
-    borderColor: WbiruC,
+    borderColor: Whitam,
     backgroundColor: Wputih,
   },
 
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     marginTop: hp('4%'),
     width: wp('78%'),
     height: hp('5%'),
-    color: Whitam,
+    color: '#424242',
     borderRadius: 15,
     backgroundColor: Wabu1,
   },
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
     marginTop: hp('1%'),
     width: wp('78%'),
     height: hp('5%'),
-    color: Whitam,
+    color: '#424242',
     borderRadius: 15,
     backgroundColor: Wabu1,
   },
