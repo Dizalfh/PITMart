@@ -17,7 +17,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../router';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {SliderBox} from 'react-native-image-slider-box';
-import {Wabu, Whitam, Wprimer, Wputih} from '../utils';
+import {Wabu, Wabu1, Whitam, Wprimer, Wputih} from '../utils';
 
 const Homepage: React.FC = () => {
   const navigation =
@@ -31,9 +31,35 @@ const Homepage: React.FC = () => {
     require('../assets/image/logo4.png'),
   ]);
 
-  const handleImagePress = (index: number) => {
-    // console.warn(`gambar ${index} ditekan`);
+  const imageArray = [
+    {id: 1, source: require('../assets/image/logo2.png')},
+    {id: 2, source: require('../assets/image/logo.png')},
+    {id: 3, source: require('../assets/image/logo4.png')},
+  ];
+
+  var myHeaders = new Headers();
+  myHeaders.append(
+    'Authorization',
+    'Bearer 26|wNumYJ6xuvwh9btNcM4OdlRw2IAQn8ClijUCUtyP',
+  );
+
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    redirect: 'follow',
   };
+
+  fetch(
+    'https://6c4a-2001-448a-4040-bad5-52b7-f071-8856-8ef5.ngrok-free.app/api/read',
+    requestOptions,
+  )
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+
+  // const handleImagePress = (index: number) => {
+  // console.warn(`gambar ${index} ditekan`);
+  // };
 
   return (
     <View style={styles.bgUtama}>
@@ -43,7 +69,7 @@ const Homepage: React.FC = () => {
           <Text style={styles.textWel2}> Selamat datang di PIT Mart</Text>
         </View>
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-          <Icon name="login" size={36} color={Wputih} />
+          <Icon name="login-variant" size={36} color={Wputih} />
         </TouchableOpacity>
       </View>
       <View style={styles.searchView}>
@@ -60,7 +86,7 @@ const Homepage: React.FC = () => {
             autoplay={true}
             autoplayInterval={3000}
             circleLoop={true}
-            onCurrentImagePressed={handleImagePress}
+            // onCurrentImagePressed={handleImagePress}
             dotColor={Wprimer}
             inactiveDotColor={Wputih}
             dotStyle={{
@@ -70,7 +96,29 @@ const Homepage: React.FC = () => {
             ImageComponentStyle={{borderRadius: 15, width: '97%', marginTop: 5}}
           />
         </View>
-        <View style={styles.productDisplay}>
+        <View style={styles.scroll}>
+          <View style={styles.rowDirection}>
+            <View style={styles.container1}>
+              {imageArray.map(item => (
+                <Image
+                  key={item.id}
+                  source={item.source}
+                  style={styles.image}
+                />
+              ))}
+            </View>
+            <View style={styles.container1}>
+              {imageArray.map(item => (
+                <Image
+                  key={item.id}
+                  source={item.source}
+                  style={styles.image}
+                />
+              ))}
+            </View>
+          </View>
+        </View>
+        {/*<View style={styles.productDisplay}>
           <View
             style={{
               marginTop: hp('1.9%'),
@@ -191,8 +239,8 @@ const Homepage: React.FC = () => {
                 />
               </View>
             </TouchableOpacity>
-          </View>
-        </View>
+          </View> */}
+        {/* </View> */}
       </ScrollView>
     </View>
   );
@@ -308,5 +356,34 @@ const styles = StyleSheet.create({
     color: Whitam,
     marginLeft: '2%',
     fontSize: 15,
+  },
+
+  scroll: {
+    height: hp('200%'),
+    // backgroundColor: Whitam,
+  },
+
+  rowDirection: {
+    marginHorizontal: hp('3%'),
+    flexDirection: 'row',
+  },
+
+  container1: {
+    flex: 1,
+    width: wp('40%'),
+    height: hp('100%'),
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 10,
+    backgroundColor: Whitam,
+  },
+
+  image: {
+    width: wp('25%'),
+    height: hp('5%'),
+    resizeMode: 'cover',
+    backgroundColor: 'red',
+    borderRadius: 10,
+    marginVertical: 10,
   },
 });

@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
   firstBackground: {
     flex: 1,
     alignItems: 'center',
-    // justifyContent: 'center',
     backgroundColor: Wprimer,
   },
 
@@ -35,7 +34,6 @@ const styles = StyleSheet.create({
     marginTop: hp('1%'),
     width: '100%',
     height: '20%',
-    // alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#CFD8DC',
   },

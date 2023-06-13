@@ -31,7 +31,7 @@ const Splash = ({navigation}: Navigation) => {
     const timer = setTimeout(() => {
       // navigation.replace('Home');
       getToken();
-    }, 3000);
+    }, 1000);
 
     return () => {
       clearTimeout(timer);

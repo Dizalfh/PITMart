@@ -8,7 +8,9 @@ import BottomTabs from '../BottomTabs/BottomTabs';
 import Register from '../screen/Register';
 import Login from '../screen/Login';
 import Profile from '../screen/Profile';
-// import AdminDrawer from '../AdminDrawer/AdminDrawer';
+import Dashboard from '../screen/Dashboard';
+import Adminbottom from '../BottomTabs/Adminbottom';
+import AddProduct from '../screen/AddProduct';
 
 const Stack = createNativeStackNavigator<RootStackParams>();
 
@@ -17,7 +19,9 @@ export type RootStackParams = {
   Home: undefined;
   Login: undefined;
   Register: undefined;
-  // AdminDrawer: undefined;
+  Dashboard: undefined;
+  Adminbottom: undefined;
+  AddProduct: undefined;
 };
 
 const App = () => {
@@ -44,11 +48,21 @@ const App = () => {
           component={Register}
           options={{headerShown: false}}
         />
-        {/* <Stack.Screen
-          name="A"
-          component={AdminDrawer}
+        <Stack.Screen
+          name="Dashboard"
+          component={Dashboard}
           options={{headerShown: false}}
-        /> */}
+        />
+        <Stack.Screen
+          name="Adminbottom"
+          component={Adminbottom}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="AddProduct"
+          component={AddProduct}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

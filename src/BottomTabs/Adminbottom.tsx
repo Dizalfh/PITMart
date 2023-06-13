@@ -1,15 +1,14 @@
+import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Whitam, Wprimer} from '../utils';
+import Dashboard from '../screen/Dashboard';
+import {Wprimer} from '../utils';
 import Homepage from '../screen/Homepage';
-import Profile from '../screen/Profile';
-import Cart from '../screen/Cart';
 
 const Tab = createBottomTabNavigator();
 
-const BottomTabs = () => {
+const Adminbottom = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -22,12 +21,8 @@ const BottomTabs = () => {
             iconName = focused ? 'home' : 'home-outline';
             color = focused ? Wprimer : Wprimer;
             size = focused ? 35 : 30;
-          } else if (route.name === 'Cart') {
-            iconName = focused ? 'cart' : 'cart-outline';
-            color = focused ? Wprimer : Wprimer;
-            size = focused ? 35 : 30;
-          } else if (route.name === 'Profile') {
-            iconName = focused ? 'account' : 'account-outline';
+          } else if (route.name === 'Dashboard') {
+            iconName = focused ? 'account-star' : 'account-star-outline';
             color = focused ? Wprimer : Wprimer;
             size = focused ? 35 : 30;
           }
@@ -36,12 +31,11 @@ const BottomTabs = () => {
         },
       })}>
       <Tab.Screen name="HomePage" component={Homepage} />
-      <Tab.Screen name="Cart" component={Cart} options={{headerShown: true}} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Dashboard" component={Dashboard} />
     </Tab.Navigator>
   );
 };
 
-export default BottomTabs;
+export default Adminbottom;
 
 const styles = StyleSheet.create({});

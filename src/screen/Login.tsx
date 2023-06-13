@@ -9,6 +9,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import React, {useState} from 'react';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -16,9 +17,8 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../router';
-import {Wabu, Wabu1, Whitam, Wprimer, Wputih} from '../utils';
+import {Wabu, Wabu1, Wabu2, Whitam, Wprimer, Wputih} from '../utils';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// import { AsyncStorage } from 'react-native';
 
 const Login = () => {
   const navigation =
@@ -27,6 +27,11 @@ const Login = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const toogglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const saveToken = async (token: any) => {
     try {
@@ -74,7 +79,7 @@ const Login = () => {
     };
 
     fetch(
-      'https://6dff-2001-448a-4042-67da-26ec-619c-7c2d-3120.ngrok-free.app/api/login',
+      'https://6c4a-2001-448a-4040-bad5-52b7-f071-8856-8ef5.ngrok-free.app/api/login',
       requestOptions,
     )
       .then(response => response.json())
@@ -112,13 +117,26 @@ const Login = () => {
         <TextInput
           style={styles.inputEmail}
           placeholder={'Email:'}
-          placeholderTextColor={Wputih}
+          placeholderTextColor={Wabu2}
+          cursorColor={Whitam}
           onChangeText={(em: string) => setEmail(em)}></TextInput>
         <TextInput
           style={styles.inputPass}
           placeholder={'Password:'}
+          value={password}
+          secureTextEntry={!showPassword}
           onChangeText={(pass: string) => setPassword(pass)}
-          placeholderTextColor={Wputih}></TextInput>
+          placeholderTextColor={Wputih}
+          cursorColor={Wputih}></TextInput>
+        <TouchableOpacity
+          style={styles.mataPass}
+          onPress={toogglePasswordVisibility}>
+          <Icon
+            name={showPassword ? 'eye-off' : 'eye'}
+            size={24}
+            color={Wputih}
+          />
+        </TouchableOpacity>
         <TouchableOpacity style={styles.logButton} onPress={() => reg()}>
           {loading ? (
             <ActivityIndicator size={'small'} color="white" />
@@ -189,7 +207,7 @@ const styles = StyleSheet.create({
   },
 
   logButton: {
-    marginTop: hp('8.5%'),
+    marginTop: hp('5.6%'),
     width: wp('48%'),
     height: hp('6%'),
     alignItems: 'center',
@@ -216,5 +234,10 @@ const styles = StyleSheet.create({
 
   registerText2: {
     color: '#039BE5',
+  },
+
+  mataPass: {
+    left: hp('15%'),
+    bottom: hp('3.8%'),
   },
 });

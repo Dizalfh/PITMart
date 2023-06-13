@@ -83,7 +83,7 @@ const Register = () => {
     };
 
     fetch(
-      'https://6dff-2001-448a-4042-67da-26ec-619c-7c2d-3120.ngrok-free.app/api/register',
+      'https://6c4a-2001-448a-4040-bad5-52b7-f071-8856-8ef5.ngrok-free.app/api/register',
       requestOptions,
     )
       .then(response => response.json())
